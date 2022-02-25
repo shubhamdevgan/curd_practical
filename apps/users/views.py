@@ -14,6 +14,9 @@ User = get_user_model()
 
 
 class SignUpUserView(CreateView):
+    '''
+        User Signup View, Will Register User from Django WEB
+    '''
     model = UserModel
     form_class = UserCreationForm
     template_name = 'users/sign_up_page.html'
@@ -24,20 +27,19 @@ class SignUpUserView(CreateView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        print('self.object: ', self.object)
         login(request=self.request, user=self.object)
         return response
 
 
 class UserDetailFillUpView(UpdateView):
+    '''
+        User DetailFillUp View, Will EDIT User Details from Django WEB
+    '''
     model = UserModel
     form_class = ProfileFillUpForm
     template_name = 'users/usermodel_form.html'
-    # template_name = 'users/profile_edit.html'
 
     def get_object(self):
-        # user_id = self.kwargs.get("pk")
-        # return get_object_or_404(UserModel, id=user_id)
         return self.request.user
 
     def get_success_url(self):
@@ -45,13 +47,14 @@ class UserDetailFillUpView(UpdateView):
 
 
 class UserDetail(DetailView):
+    '''
+        User Detail View, Will Display User Details from Django WEB
+    '''
     model = UserModel
     context_object_name = 'user'
     template_name = 'users/profile_view.html'
 
     def get_object(self):
-        # user_id = self.kwargs.get("pk")
-        # return get_object_or_404(UserModel, id=user_id)
         return self.request.user
 
     def get_context_data(self, *args, **kwargs):
@@ -60,6 +63,9 @@ class UserDetail(DetailView):
 
 
 class ChangePasswordView(View):
+    '''
+        Change User Password from Django WEB
+    '''
 
     def get(self, request, *args, **kwargs):
         form = PasswordChangeForm(request.user)

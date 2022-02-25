@@ -5,7 +5,7 @@ from .viewsets import SignUpViewSet, UpdateProfileViewSet, CustomAuthToken, Logo
 
 
 urlpatterns = [
-    path('sign_up/', SignUpUserView.as_view(), name='sign-up'),
+    path('', SignUpUserView.as_view(), name='sign-up'),
     path('user_detail/', UserDetail.as_view(), name='user_detail'),
     path('update/', UserDetailFillUpView.as_view(), name='update_view'),
     path('change_password/',

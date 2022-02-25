@@ -1,0 +1,47 @@
+API DOC:
+
+ENDPOINT : /register_api/
+    Use :  Used to Register User into the System
+    Used Model : UserModel
+    Method :  POST
+    Token Authorization Required : No
+    Parameters : 
+        username: xyz
+        password: 123
+        password2: 123
+        email: XYZ@XYZ.com
+        first_name: xyz
+        last_name: abc
+        total_experience: 3.2 Yrs   // Can be any string,demonstrating user exp
+        work_shift: DAY   // Shift can be ; DAY, NIGHT
+        designation: Sr. Python Developer   // Can be Anything
+
+ENDPOINT : /login_api/
+    Use :  Used to Login User into the System and Return User Unique Token as Response
+    Used Model : UserModel
+    Method: POST
+    Token Authorization Required : No
+    Parameters:
+        username: XYZ@XYZ.com
+        password: XYZ@XYZ.com
+        
+
+ENDPOINT : /update_profile/
+    Use :  Used to Update Exsiting User Profile 
+    Used Model : UserModel
+    Method: PATCH
+    Token Authorization Required : YES
+    Parameters:
+        first_name: xyz
+        last_name: abc
+        total_experience: 3.2 Yrs   // Can be any string,demonstrating user exp
+        work_shift: DAY   // Shift can be ; DAY, NIGHT
+        designation: Sr. Python Developer   // Can be Anything
+        profile_image : Profile Image File
+
+
+ENDPOINT : /logout_api/
+    Use :  Used to Logout User Out of the System and delete Token
+    Used Model : UserModel
+    Token Authorization Required : YES
+
