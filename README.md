@@ -48,6 +48,10 @@ Can be used as web as well as API Way.
 - Run Docker Image using Command : `docker run -p 8000:8000 shubham1test/innvonix_curd:initial`
 - If you Don't get any errors, you have successfully run project, goto browser and type `localhost:8000` you should see the project.
 
+## Scalling the Project
+- Project can be scalled using Multi-Container Architecture using Docker Container by Using and Container orchestration technology such as Kubernetes, AWS EKS, AWS ECS
+
+
 
 ## POSTMAN COLLECTION CAN BE FOUND AT
 - https://www.getpostman.com/collections/59c91f47ae6acbf79e68
