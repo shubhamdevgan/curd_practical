@@ -1,5 +1,5 @@
 """
-Django settings for innvonix_curd project.
+Django settings for demo_curd project.
 """
 
 import os

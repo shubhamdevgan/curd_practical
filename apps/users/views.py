@@ -1,5 +1,5 @@
 from urllib import request
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views import View
 from .forms import UserCreationForm, ProfileFillUpForm
 from django.views.generic.detail import DetailView
@@ -8,7 +8,7 @@ from .models import UserModel
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib.auth import login
+from django.contrib.auth import login,logout
 
 User = get_user_model()
 
@@ -22,8 +22,15 @@ class SignUpUserView(CreateView):
     template_name = 'users/sign_up_page.html'
     context_object_name = 'form'
 
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('users:user_detail')
+
+        self.object = None
+        return super().get(request, *args, **kwargs)
+
     def get_success_url(self):
-        return reverse('users:user_detail')
+        return reverse('users:update_view')
 
     def form_valid(self, form):
         response = super().form_valid(form)
@@ -44,7 +51,6 @@ class UserDetailFillUpView(UpdateView):
 
     def get_success_url(self):
         return reverse('users:user_detail')
-
 
 class UserDetail(DetailView):
     '''
@@ -91,3 +97,7 @@ class ChangePasswordView(View):
                 'form': form
             }
         )
+
+def logoutview(request):
+    logout(request)
+    return redirect('login')

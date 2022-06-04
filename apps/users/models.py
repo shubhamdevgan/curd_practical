@@ -68,7 +68,7 @@ class UserModel(AbstractBaseUser):
         max_length=5, choices=ShiftChoices, null=True, blank=True)
     created = models.DateTimeField(
         auto_now_add=True, verbose_name='Signup done On')
-
+    description = models.TextField(default="Write something about yourself.")
     USERNAME_FIELD = "email"
     REQUIRED_FIELD = ["username", "password"]
     objects = UserModelManager()

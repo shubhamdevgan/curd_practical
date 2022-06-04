@@ -21,7 +21,7 @@ WORKDIR /app/webapp/
 
 # Upgrade PIP
 RUN pip3 install --upgrade pip
-
+RUN pip3 install setuptools wheel requests
 # Install Requirements
 RUN pip3 install -r requirements.txt
 

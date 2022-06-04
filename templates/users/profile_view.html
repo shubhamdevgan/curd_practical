@@ -15,6 +15,9 @@
         .errorlist {
             color: red;
         }
+        p{
+            color: black;
+        }
     </style>
 </head>
 
@@ -42,10 +45,14 @@
                                     <p>Total Exp: {{user.total_experience}}</p>
                                 </div>
                                 <div class="form-group">
+                                    <p>Description: {{user.description}}</p>
+                                </div>
+                                <div class="form-group">
                                     <p>Work Shift: {{user.work_shift}}</p>
                                 </div>
                                 <div class="form-group form-button">
                                     <a href="{% url 'users:update_view' %}" class="signup-image-link">Edit Profile</a>
+                                    <a href="{% url 'logout' %}" class="signup-image-link">Logout</a>
                                 </div>
                             </form>
                         </div>

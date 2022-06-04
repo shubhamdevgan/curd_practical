@@ -1,5 +1,5 @@
 """
-WSGI config for innvonix_curd project.
+WSGI config for demo_curd project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

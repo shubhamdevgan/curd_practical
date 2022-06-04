@@ -1,5 +1,191 @@
-<form method="post" enctype="multipart/form-data">
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
+        <style>
+            body {
+                margin: 0;
+                padding-top: 40px;
+                color: #2e323c;
+                background: #f5f6fa;
+                position: relative;
+                height: 100%;
+            }
+            .account-settings .user-profile {
+                margin: 0 0 1rem 0;
+                padding-bottom: 1rem;
+                text-align: center;
+            }
+            .account-settings .user-profile .user-avatar {
+                margin: 0 0 1rem 0;
+            }
+            .account-settings .user-profile .user-avatar img {
+                width: 90px;
+                height: 90px;
+                -webkit-border-radius: 100px;
+                -moz-border-radius: 100px;
+                border-radius: 100px;
+            }
+            .account-settings .user-profile h5.user-name {
+                margin: 0 0 0.5rem 0;
+            }
+            .account-settings .user-profile h6.user-email {
+                margin: 0;
+                font-size: 0.8rem;
+                font-weight: 400;
+                color: #9fa8b9;
+            }
+            .account-settings .about {
+                margin: 2rem 0 0 0;
+                text-align: center;
+            }
+            .account-settings .about h5 {
+                margin: 0 0 15px 0;
+                color: #007ae1;
+            }
+            .account-settings .about p {
+                font-size: 0.825rem;
+            }
+            .form-control {
+                border: 1px solid #cfd1d8;
+                -webkit-border-radius: 2px;
+                -moz-border-radius: 2px;
+                border-radius: 2px;
+                font-size: .825rem;
+                background: #ffffff;
+                color: #2e323c;
+            }
+
+            .card {
+                background: #ffffff;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                border: 0;
+                margin-bottom: 1rem;
+            }
+
+
+        </style>
+    </head>
+<body>
+    <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="submit">
-</form>
+    <div class="container">
+        <div class="row gutters">
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="account-settings">
+                    <div class="user-profile">
+                        <div class="user-avatar">
+                            {% if user.profile_image %}
+                                <img src="{{user.profile_image.url}}" alt="{{user.first_name}} {{user.last_name}}">
+                            {% else %}
+                                <img src="#" alt="Upload Profile Pic to Display here">
+                            {% endif %}
+                        </div>
+                        <h5 class="user-name">{{user.first_name}} {{user.last_name}}</h5>
+                        <h6 class="user-email">{{user.email}}</h6>
+                    </div>
+                    <div class="about">
+                        <h5>About</h5>
+                        <p>{{user.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="row gutters">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h6 class="mb-2 text-primary">Personal Details</h6>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="fullName">First Name</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name" value="{{user.first_name}}">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="eMail">Last Name</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name" value="{{user.last_name}}">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="phone">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" value="{{user.email}}">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="website">Total Experience</label>
+                            <input type="text" class="form-control" id="total_experience" name="total_experience" value="{{user.total_experience}}">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="website">Desigination</label>
+                            <input type="text" class="form-control" id="designation" name="designation" value="{{user.designation}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row gutters">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="Street">Description</label>
+                            <input type="textarea" class="form-control" id="description" name="description" value="{{user.description}}">
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group" style="margin-top: 35px;">
+                            <label for="cars">Work Shift</label>
+                            {% if user.work_shift == "NIGHT" %}
+                            <select name="work_shift" id="work_shift">
+                                <option value="DAY">Day Shift</option>
+                                <option value="NIGHT" selected>Night Shift</option>
+                            </select>
+                            {% else %}
+                            <select name="work_shift" id="work_shift">
+                                <option value="DAY">Day Shift</option>
+                                <option value="NIGHT">Night Shift</option>
+                            </select>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="form-group">
+                            <label for="sTate">Profile Image</label>
+                            <input type="file" class="form-control" id="profile_image" name="profile_image" value="Image">
+                        </div>
+                    </div>
+                </div>
+                <div class="row gutters">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="text-right">
+                            <div class="form-group form-button">
+                                <a href='{% url "users:user_detail" %}'>
+                                <button type="button" id="submit" name="submit" class="btn btn-secondary">Cancel</button></a>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="btn btn-secondary" value="Update"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    </form>
+</body>
+</html>
